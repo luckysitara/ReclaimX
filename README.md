@@ -51,8 +51,8 @@ The protocol uses LayerZero V2 OApp pattern for cross-chain messaging:
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/your-org/reclaimx-protocol.git
-cd reclaimx-protocol
+git clone https://github.com/luckysitara/ReclaimX.git
+cd ReclaimX
 ```
 
 2. **Install dependencies**
