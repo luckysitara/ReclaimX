@@ -1,0 +1,25 @@
+[package]
+name = "reclaimx"
+version = "0.1.0"
+description = "Cross-chain wallet recovery and inheritance protocol"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "reclaimx"
+
+[features]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+cpi = ["no-entrypoint"]
+default = []
+
+[dependencies]
+anchor-lang = "0.30.0"
+anchor-spl = "0.30.0"
+solana-program = "~1.18.0"
+
+# LayerZero Solana SDK dependencies
+oapp-solana-sdk = { git = "https://github.com/LayerZero-Labs/devtools.git", branch = "main", features = ["anchor"] }
+oft-solana-sdk = { git = "https://github.com/LayerZero-Labs/devtools.git", branch = "main", features = ["anchor"] }

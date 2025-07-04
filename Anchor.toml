@@ -1,0 +1,35 @@
+[features]
+seeds = true
+skip-lint = false
+
+[programs.devnet]
+reclaimx = "YourDeployedReclaimXVaultProgramId"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "devnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
+
+[build]
+docker = false
+
+# LayerZero V2 Solana Devnet Endpoint
+[[test.genesis]]
+address = "76y77prsiCMvXMjuoZ5VRrhG5qYBrUMYTE5WgHqgjEn6"
+program = "endpoint.so"
+
+[test.validator]
+url = "https://api.devnet.solana.com"
+clone = [
+  { address = "76y77prsiCMvXMjuoZ5VRrhG5qYBrUMYTE5WgHqgjEn6" },
+]
+
+[test]
+startup_wait = 5000
+shutdown_wait = 2000
+upgradeable = false
