@@ -76,13 +76,13 @@ The protocol uses LayerZero V2 OApp and OFT patterns for cross-chain messaging:
 ### Installation
 
 1. **Clone the repository**
-\`\`\`bash
+```bash
 git clone https://github.com/luckysitara/ReclaimX.git
 cd ReclaimX
-\`\`\`
+```
 
 2. **Install dependencies**
-\`\`\`bash
+```bash
 # Root dependencies
 npm install
 
@@ -91,10 +91,10 @@ cd frontend && npm install && cd ..
 
 # Contract dependencies (if using Hardhat)
 cd contracts && npm install && cd ..
-\`\`\`
+```
 
 3. **Set up environment variables**
-\`\`\`bash
+```bash
 # Copy environment template
 cp .env.example .env
 
@@ -103,30 +103,30 @@ PRIVATE_KEY=your_private_key_here
 SEPOLIA_RPC_URL=https://rpc.sepolia.org
 ETHERSCAN_API_KEY=your_etherscan_api_key
 NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID=your_walletconnect_project_id
-\`\`\`
+```
 
 ### Build and Deploy
 
 1. **Build Solana Program**
-\`\`\`bash
+```bash
 # Build with LayerZero SDK dependencies
 anchor build
 
 # Verify program builds successfully
 ls -la target/deploy/
-\`\`\`
+```
 
 2. **Deploy to Solana Devnet**
-\`\`\`bash
+```bash
 # Deploy program
 anchor deploy --provider.cluster devnet
 
 # Note the program ID for configuration
 echo "Program deployed at: $(solana address -k target/deploy/reclaimx-keypair.json)"
-\`\`\`
+```
 
 3. **Deploy EVM Contracts**
-\`\`\`bash
+```bash
 # Compile contracts
 npx hardhat compile
 
@@ -135,22 +135,22 @@ npx hardhat run scripts/deploy-evm.ts --network sepolia
 
 # Verify contracts on Etherscan
 npx hardhat verify --network sepolia <CONTRACT_ADDRESS> <CONSTRUCTOR_ARGS>
-\`\`\`
+```
 
 4. **Configure LayerZero Peers**
-\`\`\`bash
+```bash
 # Set Solana peer on EVM contract
 npx hardhat run scripts/configure-peers.js --network sepolia
 
 # Set EVM peer on Solana program (via frontend or CLI)
 anchor run configure-peers
-\`\`\`
+```
 
 5. **Start Frontend**
-\`\`\`bash
+```bash
 cd frontend
 npm run dev
-\`\`\`
+```
 
 Visit `http://localhost:5173` to access the application.
 
@@ -269,41 +269,41 @@ Visit `http://localhost:5173` to access the application.
 ### Comprehensive Test Suite
 
 **Run Solana Program Tests:**
-\`\`\`bash
+```bash
 # Unit tests for Solana program
 anchor test
 
 # Integration tests with LayerZero
 anchor test --skip-local-validator
-\`\`\`
+```
 
 **Run EVM Contract Tests:**
-\`\`\`bash
+```bash
 cd contracts
 npx hardhat test
 
 # Test specific features
 npx hardhat test --grep "Guardian Staking"
 npx hardhat test --grep "Cross-chain Recovery"
-\`\`\`
+```
 
 **Run Frontend Tests:**
-\`\`\`bash
+```bash
 cd frontend
 npm run test
 
 # E2E tests with Playwright
 npm run test:e2e
-\`\`\`
+```
 
 **Integration Testing:**
-\`\`\`bash
+```bash
 # Full cross-chain integration tests
 npm run test:integration
 
 # Test LayerZero message flow
 npm run test:layerzero
-\`\`\`
+```
 
 ### Test Scenarios Covered
 
@@ -320,7 +320,7 @@ npm run test:layerzero
 ### LayerZero V2 Endpoint Configuration
 
 **Official Endpoint Addresses:**
-\`\`\`typescript
+```typescript
 const LAYERZERO_ENDPOINTS = {
   // Solana Networks
   solana_mainnet: {
@@ -342,11 +342,11 @@ const LAYERZERO_ENDPOINTS = {
     endpoint: "0x6EDCE65403992e310A62460808c4b910D972f10f"
   }
 };
-\`\`\`
+```
 
 ### Contract Addresses (Update After Deployment)
 
-\`\`\`typescript
+```typescript
 // Solana Program IDs
 const PROGRAM_IDS = {
   guardian_vault: "ReCLaImXGuardianVault11111111111111111111111",
@@ -364,11 +364,11 @@ const CONTRACT_ADDRESSES = {
     reclaimx_oft: "0x...",      // Update after deployment
   }
 };
-\`\`\`
+```
 
 ### DVN Configuration
 
-\`\`\`javascript
+```javascript
 // Configure Decentralized Verifier Networks
 const DVN_CONFIG = {
   required_dvns: [
@@ -380,11 +380,11 @@ const DVN_CONFIG = {
   ],
   threshold: 2 // Minimum DVN confirmations
 };
-\`\`\`
+```
 
 ### LayerZero V2 Message Options
 
-\`\`\`javascript
+```javascript
 // Gas and execution options for cross-chain messages
 const MESSAGE_OPTIONS = {
   // Standard recovery message
@@ -405,7 +405,7 @@ const MESSAGE_OPTIONS = {
     [1, 300000]
   )
 };
-\`\`\`
+```
 
 ## 🛡️ Security Considerations
 
@@ -556,15 +556,15 @@ We welcome contributions from the community! Here's how to get involved:
 ### Contribution Process
 
 1. **Fork the repository**
-\`\`\`bash
+```bash
 git clone https://github.com/your-username/ReclaimX.git
 cd ReclaimX
-\`\`\`
+```
 
 2. **Create a feature branch**
-\`\`\`bash
+```bash
 git checkout -b feature/amazing-new-feature
-\`\`\`
+```
 
 3. **Make your changes**
    - Implement the feature with tests
@@ -573,14 +573,14 @@ git checkout -b feature/amazing-new-feature
    - Follow code style guidelines
 
 4. **Commit your changes**
-\`\`\`bash
+```bash
 git commit -m 'feat: Add amazing new feature'
-\`\`\`
+```
 
 5. **Push to your branch**
-\`\`\`bash
+```bash
 git push origin feature/amazing-new-feature
-\`\`\`
+```
 
 6. **Open a Pull Request**
    - Provide detailed description of changes
